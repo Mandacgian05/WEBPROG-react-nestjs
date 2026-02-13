@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "nest build",
-    "vercel-build": "npm install && npm run build && npx tsc -p frontend/tsconfig.app.json && npx vite build frontend"
+    "install-all": "npm install && cd frontend && npm install",
+    "vercel-build": "npm run install-all && npm run build && npx tsc -p frontend/tsconfig.app.json && npx vite build frontend"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",

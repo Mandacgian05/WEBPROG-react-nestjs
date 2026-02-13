@@ -1,7 +1,6 @@
 {
   "name": "webprog-react-nestjs",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "build": "nest build",
     "vercel-build": "npm install && npm run build && npx tsc -p frontend/tsconfig.app.json && npx vite build frontend"
