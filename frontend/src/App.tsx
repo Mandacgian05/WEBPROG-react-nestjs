@@ -49,5 +49,4 @@ function App() {
     </div>
   );
 }
-
-export default App; // THIS IS THE FIX FOR THE BLANK SCREEN
+export default App;
