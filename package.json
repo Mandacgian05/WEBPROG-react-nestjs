@@ -1,26 +1,31 @@
 {
   "name": "webprog-react-nestjs",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "build": "nest build",
-    "vercel-build": "npm install && npm run build && npx tsc -p frontend/tsconfig.app.json && npx vite build frontend"
+    "dev": "concurrently \"nest start --watch\" \"vite\"",
+    "backend-build": "nest build",
+    "frontend-build": "vite build frontend",
+    "vercel-build": "npm run frontend-build && npm run backend-build"
   },
   "dependencies": {
-    "@nestjs/common": "^11.0.1",
-    "@nestjs/core": "^11.0.1",
-    "@nestjs/platform-express": "^11.0.1",
-    "@supabase/supabase-js": "^2.45.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "@nestjs/common": "^10.4.22",
+    "@nestjs/core": "^10.4.22",
+    "@nestjs/platform-express": "^10.4.22",
+    "@supabase/supabase-js": "^2.95.3",
+    "reflect-metadata": "^0.1.14",
+    "rimraf": "^5.0.0",
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
-    "@nestjs/cli": "^11.0.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "typescript": "^5.7.3",
-    "vite": "^5.3.4"
+    "@nestjs/cli": "^10.4.9",
+    "@nestjs/schematics": "^10.2.3",
+    "@types/babel__core": "^7.20.5",
+    "@types/node": "^20.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "concurrently": "^8.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21"
   }
 }

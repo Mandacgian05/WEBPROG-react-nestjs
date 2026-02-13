@@ -2,11 +2,11 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "jsx": "react-jsx",
     "types": ["vite/client"],
     "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "noEmit": false,
     "strict": false,
     "skipLibCheck": true
   },

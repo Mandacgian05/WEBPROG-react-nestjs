@@ -1,3 +1,4 @@
+// backend/src/guestbook/guestbook.controller.ts
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { GuestbookService } from './guestbook.service';
 
@@ -6,12 +7,12 @@ export class GuestbookController {
   constructor(private readonly guestbookService: GuestbookService) {}
 
   @Get() // Handles listing messages
-  listPosts() {
-    return this.guestbookService.findAll();
+  async listPosts() {
+    return await this.guestbookService.findAll();
   }
 
   @Post() // Handles adding new messages
-  addPost(@Body() body: { name: string; message: string }) {
-    return this.guestbookService.create(body);
+  async addPost(@Body() body: { name: string; message: string }) {
+    return await this.guestbookService.create(body);
   }
 }
