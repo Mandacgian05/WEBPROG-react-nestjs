@@ -6,12 +6,13 @@ function App() {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
 
+  // Loads posts directly from Supabase
   const loadPosts = async () => {
-    // Fetches from Supabase directly
     const { data, error } = await supabase
       .from('guestbook')
       .select('*')
       .order('created_at', { ascending: false });
+    
     if (!error) setPosts(data || []);
   };
 
@@ -19,7 +20,7 @@ function App() {
     e.preventDefault();
     if (!name || !message) return;
 
-    // FIX: Directly insert to Supabase, NOT to '/guestbook'
+    // Directly inserting to Supabase fixes the 404 POST error
     const { error } = await supabase
       .from('guestbook')
       .insert([{ name, message }]);
@@ -29,7 +30,7 @@ function App() {
       setMessage('');
       loadPosts();
     } else {
-      alert("Database error: " + error.message);
+      alert("Error: " + error.message);
     }
   };
 
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <div style={{ background: 'linear-gradient(135deg, #1f1c2c, #928dab)', color: '#fff', minHeight: '100vh', padding: '60px', fontFamily: 'Montserrat, sans-serif' }}>
-      <h1 style={{ fontSize: '3rem', textAlign: 'center', background: 'linear-gradient(90deg, #ff8a00, #e52e71)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+      <h1 style={{ textAlign: 'center', fontSize: '3rem', background: 'linear-gradient(90deg, #ff8a00, #e52e71)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
         My Profile & Guestbook
       </h1>
 
