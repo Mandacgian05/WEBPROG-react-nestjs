@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "build": "nest build",
-    "install-all": "npm install && cd frontend && npm install",
-    "vercel-build": "npm run install-all && npm run build && npx tsc -p frontend/tsconfig.app.json && npx vite build frontend"
+    "vercel-build": "npm install && npm run build && npx tsc -p frontend/tsconfig.app.json && npx vite build frontend"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -19,10 +18,8 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
     "typescript": "^5.7.3",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "@vitejs/plugin-react": "^4.3.1"
   }
 }
