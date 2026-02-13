@@ -1,11 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { GuestbookModule } from './guestbook/guestbook.module';// Ensure this line exists
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { GuestbookModule } from './guestbook/guestbook.module';
 
 @Module({
-  imports: [GuestbookModule], // Ensure GuestbookModule is in this array
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    // This tells NestJS to look for your index.html in the public folder
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), 'public'),
+    }),
+    GuestbookModule,
+  ],
+  // AppController and AppService are removed to prevent "Hello World" or 404 errors
 })
 export class AppModule {}
