@@ -1,18 +1,9 @@
 {
   "name": "webprog-react-nestjs",
   "version": "0.0.1",
-  "description": "Fullstack NestJS + React + Supabase Monorepo",
   "private": true,
-  "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
     "install-all": "npm install && cd frontend && npm install",
     "vercel-build": "npm run install-all && npm run build && cd frontend && npm run build"
   },
@@ -26,10 +17,6 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",
-    "@nestjs/schematics": "^11.0.0",
-    "@nestjs/testing": "^11.0.1",
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.10.7",
     "typescript": "^5.7.3"
   }
 }
