@@ -5,22 +5,21 @@ function App() {
   const [posts, setPosts] = useState<any[]>([]);
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const loadPosts = async () => {
-    // Selects all columns from your 'guestbook' table
     const { data, error } = await supabase
       .from('guestbook')
       .select('*')
       .order('created_at', { ascending: false });
-
     if (!error) setPosts(data || []);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !message) return;
+    if (!name || !message || loading) return;
 
-    // Inserts into 'name' and 'message' columns exactly as seen in your screenshot
+    setLoading(true);
     const { error } = await supabase
       .from('guestbook')
       .insert([{ name, message }]);
@@ -28,10 +27,9 @@ function App() {
     if (!error) {
       setName('');
       setMessage('');
-      loadPosts();
-    } else {
-      console.error(error.message);
+      await loadPosts();
     }
+    setLoading(false);
   };
 
   useEffect(() => { loadPosts(); }, []);
@@ -40,9 +38,11 @@ function App() {
     <div style={{ backgroundColor: '#1a1c2c', color: 'white', minHeight: '100vh', padding: '50px', fontFamily: 'sans-serif' }}>
       <h1>Guestbook</h1>
       <form onSubmit={handleSubmit} style={{ marginBottom: '40px' }}>
-        <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" style={{ padding: '10px', margin: '5px' }} />
-        <input value={message} onChange={e => setMessage(e.target.value)} placeholder="Message" style={{ padding: '10px', margin: '5px' }} />
-        <button type="submit" style={{ padding: '10px 20px', background: '#e52e71', color: 'white', border: 'none', borderRadius: '4px' }}>Sign</button>
+        <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" style={{ padding: '10px', margin: '5px', borderRadius: '4px' }} />
+        <input value={message} onChange={e => setMessage(e.target.value)} placeholder="Message" style={{ padding: '10px', margin: '5px', borderRadius: '4px' }} />
+        <button type="submit" disabled={loading} style={{ padding: '10px 20px', background: '#e52e71', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+          {loading ? 'Saving...' : 'Sign'}
+        </button>
       </form>
       <div>
         {posts.map((p) => (
