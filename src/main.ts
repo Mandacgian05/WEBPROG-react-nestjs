@@ -4,12 +4,13 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 
 async function bootstrap() {
+  // Use NestExpressApplication to access 'useStaticAssets'
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   
-  // Serves the public folder for the frontend UI
+  // This serves your public/index.html when you visit the root URL
   app.useStaticAssets(join(__dirname, '..', 'public'));
   
-  app.enableCors();
+  app.enableCors(); // Vital for web communication
   await app.listen(3000);
 }
 bootstrap();
