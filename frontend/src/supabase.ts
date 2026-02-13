@@ -1,5 +1,7 @@
+/// <reference types="vite/client" />
 import { createClient } from '@supabase/supabase-js'
 
+// Vercel environment variables MUST start with VITE_ for the frontend
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 

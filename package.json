@@ -5,13 +5,13 @@
   "scripts": {
     "build": "nest build",
     "install-all": "npm install && cd frontend && npm install",
-    "vercel-build": "npm run install-all && npm run build && cd frontend && npm run build"
+    "vercel-build": "npm run install-all && npm run build && cd frontend && npm run build-frontend"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
-    "@supabase/supabase-js": "^2.95.3",
+    "@supabase/supabase-js": "^2.45.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
