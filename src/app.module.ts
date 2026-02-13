@@ -7,7 +7,7 @@ import { GuestbookModule } from './guestbook/guestbook.module';
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(process.cwd(), 'public'),
-      exclude: ['/guestbook*'], // Keep the API separate
+      exclude: ['/guestbook/:path*'], // ✅ FINAL FIX
     }),
     GuestbookModule,
   ],
