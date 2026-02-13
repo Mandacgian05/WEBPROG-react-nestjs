@@ -40,7 +40,7 @@ function App() {
       <form onSubmit={handleSubmit} style={{ marginBottom: '40px' }}>
         <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" style={{ padding: '10px', margin: '5px', borderRadius: '4px' }} />
         <input value={message} onChange={e => setMessage(e.target.value)} placeholder="Message" style={{ padding: '10px', margin: '5px', borderRadius: '4px' }} />
-        <button type="submit" disabled={loading} style={{ padding: '10px 20px', background: '#e52e71', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+        <button type="submit" disabled={loading} style={{ padding: '10px 20px', background: '#e52e71', color: 'white', border: 'none', borderRadius: '4px' }}>
           {loading ? 'Saving...' : 'Sign'}
         </button>
       </form>
